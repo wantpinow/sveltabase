@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import type { PageData } from './$types';
+	export let data: PageData;
+</script>
+
+<h1 class="text-3xl font-bold underline mb-2">Hi {data.user?.email ?? 'there'}!</h1>
+<p>
+	This is a minimal Svelte + Supabase + Tailwind starter template. Just add a .env file and you're
+	ready to go.
+</p>
