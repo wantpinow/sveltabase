@@ -3,11 +3,19 @@ import type { RequestEvent } from '@sveltejs/kit';
 const rules = [
 	// ./
 	(event: RequestEvent) => {
-		return event.url.pathname === '/' && false;
+		return event.url.pathname === '/';
 	},
 	// ./login
 	(event: RequestEvent) => {
 		return event.url.pathname === '/login' && event.locals.user === null;
+	},
+	// ./register
+	(event: RequestEvent) => {
+		return event.url.pathname === '/register' && event.locals.user === null;
+	},
+	// ./admin/users
+	(event: RequestEvent) => {
+		return event.url.pathname === '/admin/users' && event.locals.user?.app_metadata?.claims_admin;
 	}
 ];
 

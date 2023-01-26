@@ -34,8 +34,12 @@
 		<a href="/">sveltabase</a>
 		{#if data.user}
 			<p class="cursor-pointer" on:click={logout} on:keydown={logout}>logout</p>
+			<!-- <a href="/logout" class="mr-2">logout</a> -->
 		{:else}
-			<a href="/login">login</a>
+			<div>
+				<a href="/login" class="mr-2">login</a>
+				<a href="/register">register</a>
+			</div>
 		{/if}
 	</nav>
 	<PageTransition url={$page.url}>

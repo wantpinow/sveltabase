@@ -13,9 +13,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// check authorization rules
 	const allowed = await authorized(event);
 	if (!allowed) {
-		return Response.redirect(`${event.url.origin}/login`, 301);
+		return Response.redirect(`${event.url.origin}`, 301);
 	}
-	console.log('server');
 
 	return resolve(event);
 };

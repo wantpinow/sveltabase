@@ -8,3 +8,6 @@
 	This is a minimal Svelte + Supabase + Tailwind starter template. Just add a .env file and you're
 	ready to go.
 </p>
+
+<a href="/login">login</a>
+<a href="/admin/users">admin/users</a>

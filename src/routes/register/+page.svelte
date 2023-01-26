@@ -9,5 +9,6 @@
 	{/if}
 	<input name="email" class="block" type="email" placeholder="Email" />
 	<input name="password" class="block" type="password" placeholder="Password" />
-	<button type="submit" class="block"> Login </button>
+	<input name="passwordConfirm" class="block" type="password" placeholder="Confirm Password" />
+	<button type="submit" class="block"> Register </button>
 </form>
