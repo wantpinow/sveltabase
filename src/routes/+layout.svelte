@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { goto, invalidate } from '$app/navigation';
-	import { supabaseClient } from '$lib/db';
+	import { page } from '$app/stores';
+	import PageTransition from '$lib/components/pageTransition.svelte';
+	import { sb } from '$lib/supabase';
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import type { PageData } from './$types';
@@ -9,7 +11,7 @@
 		// subscribe to supabase client auth changes
 		const {
 			data: { subscription }
-		} = supabaseClient.auth.onAuthStateChange(() => {
+		} = sb.auth.onAuthStateChange(() => {
 			invalidate('supabase:auth');
 		});
 
@@ -22,7 +24,7 @@
 	export let data: PageData;
 
 	const logout = async () => {
-		await supabaseClient.auth.signOut();
+		await sb.auth.signOut();
 		goto('/');
 	};
 </script>
@@ -36,7 +38,9 @@
 			<a href="/login">login</a>
 		{/if}
 	</nav>
-	<slot />
+	<PageTransition url={$page.url}>
+		<slot />
+	</PageTransition>
 </div>
 
 <style lang="postcss">
